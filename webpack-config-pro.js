@@ -1,6 +1,6 @@
 const {resolve} = require('path')
 module.exports = {
-  entry:'./src/app/app.js',
+  entry:'./src/app/entry.js',
   output:{
     // 打包输出目录
     path: resolve(__dirname, 'dist'),

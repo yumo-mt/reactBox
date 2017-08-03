@@ -6,7 +6,8 @@ var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 module.exports = {
   // 配置页面入口js文件
   entry: [
-    './src/app/app.js'
+    'react-hot-loader/patch', // RHL patch
+    './src/app/entry.js'
   ],
 
   // 配置打包输出相关
