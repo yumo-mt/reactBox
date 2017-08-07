@@ -1,5 +1,25 @@
 {
-  "presets":[["es2015", { "modules": false }],"react","es2016"],
-  "plugins": ["react-hot-loader/babel"]
+  "presets": [
+    [
+      "es2015",
+      {
+        "modules": false
+      }
+    ],
+    "react",
+    "stage-2"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    ["transform-runtime", {
+      "helpers": false,
+      "polyfill": false,
+      "regenerator": true,
+      "moduleName": "babel-runtime"
+    }],
+    "transform-decorators-legacy",
+    "transform-decorators",
+    "transform-class-properties"
+  ]
 }
 

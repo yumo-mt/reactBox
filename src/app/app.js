@@ -1,13 +1,16 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
-import {Link, BrowserRouter, Route, NavLink, Switch} from 'react-router-dom';
+import {Link, HashRouter, BrowserRouter, Route, NavLink, Switch} from 'react-router-dom';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
-import Com1 from './components/com1';
-import Com2 from './components/com2';
-import Com3 from './components/com3';
+import AsyncLoadModule from './AsyncComponent';
+
+
 import 'react-hot-loader/patch';
 import './app.css'
+
+
+
 const leftNav = () => {
   return (
     <nav>
@@ -20,6 +23,29 @@ const leftNav = () => {
   )
 };
 class App extends React.Component {
+  WrapCom1(props){
+    return (
+      <AsyncLoadModule moduleId="com1Box" load={() => import('./components/com1')}>
+        {(Comp) => <Comp {...props}/>}
+      </AsyncLoadModule>
+    )
+  }
+
+  WrapCom2(props){
+    return (
+      <AsyncLoadModule moduleId="com2Box" load={() => import('./components/com2')}>
+        {(Comp) => <Comp {...props}/>}
+      </AsyncLoadModule>
+    )
+  }
+  WrapCom3(props){
+    return (
+      <AsyncLoadModule moduleId="com3Box" load={() => import('./components/com3')}>
+        {(Comp) => <Comp {...props}/>}
+      </AsyncLoadModule>
+    )
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -34,10 +60,10 @@ class App extends React.Component {
                   <div key={location.pathname}
                        style={{position: 'absolute', width: '200px', background: 'lightblue', height: '100px'}}>
                     <Switch key={location.key} location={location}>
-                      <Route exact path="/" component={Com1}/>
-                      <Route exact path="/com1" component={Com1}/>
-                      <Route exact path="/com2" component={Com2}/>
-                      <Route exact path="/com3" component={Com3}/>
+                      <Route exact path="/" component={this.WrapCom1}/>
+                      <Route exact path="/com1" component={this.WrapCom1}/>
+                      <Route exact path="/com2" component={this.WrapCom2}/>
+                      <Route exact path="/com3" component={this.WrapCom3}/>
                     </Switch>
                   </div>
                 </CSSTransition>
@@ -48,5 +74,8 @@ class App extends React.Component {
       </BrowserRouter>
     )
   }
-};
+}
+;
+
+render(<App/>, document.getElementById('app'))
 export default App;

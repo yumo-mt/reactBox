@@ -2,10 +2,9 @@ const {resolve} = require('path')
 module.exports = {
   entry:'./src/app/entry.js',
   output:{
-    // 打包输出目录
-    path: resolve(__dirname, 'dist'),
-    // 入口js的打包输出文件名
-    filename: 'index.js'
+    path: resolve(__dirname, './dist'),
+    filename: '[name].[chunkhash:8].index.js',
+    chunkFilename: '[name]-[id].[chunkhash:8].index.js',
   },
   module: {
     rules: [

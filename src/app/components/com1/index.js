@@ -5,6 +5,9 @@ export default class Com1 extends React.Component {
     super(props);
     this.state = {}
   }
+  componentDidMount(){
+    console.log(this)
+  }
 
   render() {
     return (
