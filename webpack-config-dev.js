@@ -16,12 +16,9 @@ module.exports = {
     // path: resolve(__dirname, 'dist'),
     // 入口js的打包输出文件名
     // filename: 'index.js'
-
     path: resolve(__dirname, './dist'),
     filename: '[name].[chunkhash:8].index.js',
     chunkFilename: '[name].[chunkhash:8].index.js',
-
-
   },
 
   module: {
