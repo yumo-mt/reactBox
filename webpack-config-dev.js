@@ -1,15 +1,17 @@
 const {resolve} = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
-
+var webpack = require('webpack');
 
 module.exports = {
   // 配置页面入口js文件
-  entry: [
-    'react-hot-loader/patch', // RHL patch
-    './src/app/entry.js'
-  ],
-
+  entry: {
+    app: [
+      'react-hot-loader/patch', // RHL patch
+      './src/app/entry.js'
+    ],
+    vendor: ["jquery", "react", "react-dom", "react-router"],
+  },
   // 配置打包输出相关
   output: {
     // 打包输出目录
@@ -109,6 +111,10 @@ module.exports = {
    而plugin, 关注的不是文件的格式, 而是在编译的各个阶段, 会触发不同的事件, 让你可以干预每个编译阶段.
    */
   plugins: [
+
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor'
+    }),
     /*
      html-webpack-plugin用来打包入口html文件
      entry配置的入口是js文件, webpack以js文件为入口, 遇到import, 用配置的loader加载引入文件
