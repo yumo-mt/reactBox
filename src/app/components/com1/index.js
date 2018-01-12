@@ -12,7 +12,7 @@ export default class Com1 extends React.Component {
   render() {
     return (
       <div className="com1" style={{position: "absolute"}}>
-       111231
+       111111
       </div>
     )
   }
