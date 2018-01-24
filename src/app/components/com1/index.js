@@ -22,7 +22,7 @@ export default class Com1 extends React.Component {
     }
     return (
       <div className="com1" style={{position: "absolute"}}>
-        这是1
+        111223311-111999
         <div className="b">bb</div>
         <div>{this.state.data.data[0].city}</div>
       </div>

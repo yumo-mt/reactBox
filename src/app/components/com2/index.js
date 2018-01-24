@@ -3,7 +3,7 @@ export default class Com2 extends React.Component {
   render() {
     return (
       <div style={{position:"absolute"}}>
-        222222222222
+       2121222
       </div>
     )
   }
