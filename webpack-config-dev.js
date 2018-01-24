@@ -19,7 +19,17 @@ module.exports = merge(common, {
     port: 8100,
     host: "0.0.0.0",
     disableHostCheck: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    contentBase: 'static',
+    // 代理服务
+    proxy: {
+      '/list':{
+        target:'http://api.manster.me/proxy',
+        secure: false,
+        pathRewrite: {'^/list' : ''},
+        changeOrigin:true,
+      }
+    }
   },
   plugins: [
     new OpenBrowserPlugin({ url: 'http://localhost:8100' }),
@@ -31,4 +41,3 @@ module.exports = merge(common, {
 })
 
 
- 
